@@ -288,54 +288,39 @@
 
         /* --- PERBAIKAN WARNA BACKGROUND ANTAR-SECTION --- */
         .panduan-section {
-            background-color: var(--white); /* Putih Bersih */
+            background-color: var(--white);
         }
 
         .form-section {
-            background-color: #EFF6FF; /* Biru Sangat Muda Lembut (Kontras Terang) */
+            background-color: #EFF6FF;
             border-top: 1px solid rgba(46, 59, 149, 0.05);
             border-bottom: 1px solid rgba(46, 59, 149, 0.05);
         }
 
         .tes-section {
-            background-color: var(--light-bg); /* Abu-abu terang bawaan */
+            background-color: var(--light-bg);
         }
 
-        /* --- PERBAIKAN CARD FORM DATA DIRI (PREMIUM & HIGH NOTICE) --- */
+        /* --- PERBAIKAN CARD FORM DATA DIRI (SISTEM GRID & KOLOM GAMBAR) --- */
         .form-notice-card {
             background: var(--white);
             border-radius: 24px;
             padding: 40px;
             box-shadow: 0 20px 40px rgba(46, 59, 149, 0.12);
             border: 2px solid var(--primary-blue);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr; /* Membagi kolom teks dan gambar */
             gap: 40px;
-            position: relative;
-            overflow: hidden;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        /* Efek Dekorasi Garis Transparan di Belakang Card */
-        .form-notice-card::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: rgba(46, 59, 149, 0.04);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
         .notice-text {
-            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* Lencana Penanda Penting */
         .badge-important {
             display: inline-flex;
             align-items: center;
@@ -348,6 +333,7 @@
             padding: 6px 14px;
             border-radius: 30px;
             margin-bottom: 15px;
+            width: fit-content;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 10px rgba(229, 57, 37, 0.25);
         }
@@ -363,6 +349,52 @@
             color: #475569;
             font-size: 15px;
             line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        /* Style List untuk Dokumen Persiapan */
+        .prep-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .prep-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .prep-list li i {
+            color: var(--primary-blue);
+        }
+
+        /* Wrapper Gambar Contoh Lampiran */
+        .notice-image-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .notice-image-wrapper img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .image-caption {
+            font-size: 12px;
+            color: var(--muted-text);
+            font-weight: 600;
+            text-align: center;
         }
 
         /* Animasi Berdenyut (Pulse) Khusus Tombol Utama */
@@ -374,6 +406,7 @@
             box-shadow: 0 8px 25px rgba(229, 57, 37, 0.35);
             animation: pulse-animation 2s infinite;
             white-space: nowrap;
+            width: fit-content;
         }
 
         .btn-pulse:hover {
@@ -519,7 +552,8 @@
         @media (max-width: 992px) {
             .hero h2 { font-size: 36px; }
             .hero p { font-size: 16px; }
-            .form-notice-card { flex-direction: column; text-align: center; padding: 30px; }
+            .form-notice-card { grid-template-columns: 1fr; padding: 30px; gap: 30px; }
+            .btn-pulse { width: 100%; justify-content: center; }
             .tes-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
@@ -560,8 +594,6 @@
                 min-width: 100%;
             }
 
-            .form-notice-card { gap: 25px; }
-            .btn-pulse { width: 100%; justify-content: center; }
             .tes-grid { grid-template-columns: 1fr; }
             .hero h2 { font-size: 28px; }
             .embed-container iframe { height: 450px; }
@@ -631,14 +663,31 @@
                     <h3>Formulir Kelengkapan Data Peserta Didik<br>SMA IPIEMS Tahun Ajaran 2026–2027</h3>
                 </div>
                 
-                <!-- CARD UTAMA PENGISIAN FORM (PREMIUM LOOK & HIGH NOTICE) -->
+                <!-- CARD UTAMA PENGISIAN FORM (GRID 2 KOLOM: INFO & GAMBAR LAMPIRAN) -->
                 <div class="form-notice-card">
                     <div class="notice-text">
-                        <span class="badge-important"><i class="fa-solid fa-triangle-exclamation"></i> Wajib Diisi</span>
-                        <h4>Keterangan Validasi Data</h4>
-                        <p>Seluruh peserta didik diwajibkan mengisi formulir ini dengan lengkap, benar, dan sesuai kondisi terbaru. Data yang diberikan akan digunakan sebagai data administrasi resmi SMA IPIEMS Tahun Ajaran 2026–2027. Pastikan seluruh informasi telah diperiksa kembali sebelum mengirimkan formulir. Terima kasih atas kerja samanya.</p>
+                        <div>
+                            <span class="badge-important"><i class="fa-solid fa-triangle-exclamation"></i> Wajib Diisi</span>
+                            <h4>Keterangan Validasi Data & Persiapan Berkas</h4>
+                            <p>Seluruh peserta didik diwajibkan mengisi formulir ini dengan lengkap, benar, dan sesuai kondisi terbaru. Sebelum mengakses tautan formulir, pastikan Anda telah mempersiapkan **file foto atau hasil scan** dari beberapa dokumen penting berikut:</p>
+                            
+                            <!-- List Informasi Dokumen -->
+                            <ul class="prep-list">
+                                <li><i class="fa-solid fa-square-check"></i> Pas FOTO terbaru</li>
+                                <li><i class="fa-solid fa-square-check"></i> File Surat Keterangan Lulus (SKL) / Ijazah</li>
+                                <li><i class="fa-solid fa-square-check"></i> File Kartu Keluarga (KK)</li>
+                                <li><i class="fa-solid fa-square-check"></i> File PIP / KIP (Bila ada)</li>
+                            </ul>
+                            <p>Data yang diberikan akan digunakan sebagai data administrasi resmi SMA IPIEMS Tahun Ajaran 2026–2027. Pastikan seluruh informasi telah diperiksa kembali sebelum mengirimkan formulir.</p>
+                        </div>
+                        <a href="https://forms.gle/N2ueHNExPi3L5VPq9" target="_blank" class="btn btn-pulse"><i class="fa-solid fa-pen-to-square"></i> Isi Formulir Sekarang</a>
                     </div>
-                    <a href="https://forms.gle/N2ueHNExPi3L5VPq9" target="_blank" class="btn btn-pulse"><i class="fa-solid fa-pen-to-square"></i> Isi Formulir Sekarang</a>
+                    
+                    <!-- Kolom Kanan: Lampiran Gambar Panduan KK -->
+                    <div class="notice-image-wrapper">
+                        <img src="ContohFotoKK.png" alt="Panduan Contoh Foto KK Benar dan Salah">
+                        <span class="image-caption"><i class="fa-solid fa-camera"></i> Perhatikan posisi pengambilan gambar dokumen agar berkas valid</span>
+                    </div>
                 </div>
             </div>
         </section>
