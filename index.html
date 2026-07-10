@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <!-- Mengatur agar tampilan di HP tetap presisi seperti versi desktop (Lebar tetap 1200px) -->
-    <meta name="viewport" content="width=1200, initial-scale=1.0">
+    <!-- Menggunakan viewport standar agar responsif di HP/Tablet -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Panduan & Tes SMA IPIEMS</title>
     <link
       rel="icon"
@@ -43,12 +43,11 @@
             background-color: var(--light-bg);
             color: var(--dark-text);
             line-height: 1.6;
-            min-width: 1200px; /* Memastikan layout tidak hancur di layar kecil dan mempertahankan rasio desktop */
         }
 
         /* --- NAVBAR --- */
         header {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
@@ -94,11 +93,19 @@
             letter-spacing: 1px;
         }
 
+        /* Tombol Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
         nav ul {
             display: flex;
             list-style: none;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
         }
 
         nav ul li {
@@ -123,7 +130,7 @@
             background: rgba(46, 59, 149, 0.05);
         }
 
-        /* Sub Navigasi (Dropdown) */
+        /* Dropdown Menu */
         .dropdown {
             position: relative;
         }
@@ -136,12 +143,13 @@
             box-shadow: var(--shadow);
             border-radius: 12px;
             padding: 10px 0;
-            min-width: 240px;
+            min-width: 260px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: var(--transition);
             border: 1px solid rgba(46, 59, 149, 0.08);
+            z-index: 1001;
         }
 
         .dropdown:hover .dropdown-menu {
@@ -168,20 +176,15 @@
             min-height: calc(100vh - 160px);
         }
 
-        .page-section {
-            display: block;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
         /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(135deg, rgba(46, 59, 149, 0.03) 0%, rgba(229, 57, 37, 0.02) 100%), var(--white);
-            padding: 100px 20px;
+            background: linear-gradient(135deg, rgba(46, 59, 149, 0.9) 0%, rgba(229, 57, 53, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200') no-repeat center center;
+            background-size: cover;
+            padding: 120px 20px;
             text-align: center;
             border-bottom: 1px solid rgba(46, 59, 149, 0.05);
+            color: var(--white);
         }
 
         .hero-content {
@@ -192,18 +195,18 @@
         .hero h2 {
             font-size: 42px;
             font-weight: 800;
-            color: var(--primary-blue);
+            color: var(--white);
             margin-bottom: 20px;
             line-height: 1.3;
         }
 
         .hero h2 span {
-            color: var(--primary-red);
+            color: #FFEB3B;
         }
 
         .hero p {
             font-size: 18px;
-            color: var(--muted-text);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 35px;
         }
 
@@ -220,13 +223,23 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(46, 59, 149, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .btn:hover {
             background: #1e2870;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(46, 59, 149, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-light {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+        
+        .btn-light:hover {
+            background: #f1f5f9;
+            color: #1e2870;
         }
 
         .btn-red {
@@ -243,7 +256,11 @@
         .section-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 20px;
+            padding: 70px 20px;
+        }
+
+        section {
+            scroll-margin-top: 90px; 
         }
 
         .section-title {
@@ -269,31 +286,107 @@
             border-radius: 2px;
         }
 
-        /* --- SECTION FORM DATA DIRI --- */
-        .form-section {
-            background: var(--white);
+        /* --- PERBAIKAN WARNA BACKGROUND ANTAR-SECTION --- */
+        .panduan-section {
+            background-color: var(--white); /* Putih Bersih */
         }
 
+        .form-section {
+            background-color: #EFF6FF; /* Biru Sangat Muda Lembut (Kontras Terang) */
+            border-top: 1px solid rgba(46, 59, 149, 0.05);
+            border-bottom: 1px solid rgba(46, 59, 149, 0.05);
+        }
+
+        .tes-section {
+            background-color: var(--light-bg); /* Abu-abu terang bawaan */
+        }
+
+        /* --- PERBAIKAN CARD FORM DATA DIRI (PREMIUM & HIGH NOTICE) --- */
         .form-notice-card {
-            background: var(--light-bg);
-            border-left: 5px solid var(--primary-blue);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: var(--shadow);
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(46, 59, 149, 0.12);
+            border: 2px solid var(--primary-blue);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 30px;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Efek Dekorasi Garis Transparan di Belakang Card */
+        .form-notice-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(46, 59, 149, 0.04);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .notice-text {
+            flex: 1;
+        }
+
+        /* Lencana Penanda Penting */
+        .badge-important {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-red);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 30px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(229, 57, 37, 0.25);
         }
 
         .notice-text h4 {
-            font-size: 20px;
+            font-size: 24px;
             color: var(--primary-blue);
-            margin-bottom: 8px;
+            font-weight: 800;
+            margin-bottom: 12px;
         }
 
         .notice-text p {
-            color: var(--muted-text);
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Animasi Berdenyut (Pulse) Khusus Tombol Utama */
+        .btn-pulse {
+            background: linear-gradient(135deg, var(--primary-red) 0%, #FF5252 100%);
+            padding: 18px 36px;
+            font-size: 16px;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(229, 57, 37, 0.35);
+            animation: pulse-animation 2s infinite;
+            white-space: nowrap;
+        }
+
+        .btn-pulse:hover {
+            background: linear-gradient(135deg, #c62828 0%, var(--primary-red) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(229, 57, 37, 0.45);
+            animation: none;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0 rgba(229, 57, 37, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(229, 57, 37, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(229, 57, 37, 0); }
         }
 
         /* --- SECTION TES (GRID LAYOUT) --- */
@@ -301,6 +394,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+            width: 100%;
         }
 
         .tes-card {
@@ -335,11 +429,11 @@
             background: linear-gradient(135deg, var(--primary-red) 0%, #ff6b6b 100%);
         }
 
-        .card-header-ui icon {
+        .card-header-ui i {
             position: absolute;
             right: 20px;
             bottom: 10px;
-            font-size: 60px;
+            font-size: 50px;
             opacity: 0.15;
         }
 
@@ -362,28 +456,20 @@
             font-size: 15px;
         }
 
-        /* --- PAGE PANDUAN (EMBED PDF) --- */
-        .panduan-page-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .back-btn-area {
-            margin-bottom: 20px;
-        }
-
+        /* --- CONFIG EMBED DRIVE --- */
         .embed-container {
             background: var(--white);
             border-radius: 16px;
             box-shadow: var(--shadow);
-            padding: 20px;
+            padding: 15px;
             border: 1px solid rgba(46, 59, 149, 0.05);
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .embed-container iframe {
             width: 100%;
-            height: 700px;
+            height: 600px;
             border: none;
             border-radius: 8px;
         }
@@ -427,6 +513,60 @@
         .footer-links a:hover {
             color: var(--white);
         }
+
+        /* ================= MEDIA QUERIES (RESPONSIVE DESIGN) ================= */
+        
+        @media (max-width: 992px) {
+            .hero h2 { font-size: 36px; }
+            .hero p { font-size: 16px; }
+            .form-notice-card { flex-direction: column; text-align: center; padding: 30px; }
+            .tes-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                border-top: 1px solid rgba(0,0,0,0.05);
+                padding: 10px 0;
+                display: none;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li { width: 100%; }
+            nav ul li a { padding: 12px 25px; border-radius: 0; }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding-left: 20px;
+                background: #f8fafc;
+                display: block;
+                min-width: 100%;
+            }
+
+            .form-notice-card { gap: 25px; }
+            .btn-pulse { width: 100%; justify-content: center; }
+            .tes-grid { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 28px; }
+            .embed-container iframe { height: 450px; }
+            .footer-container { flex-direction: column; gap: 20px; text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -435,23 +575,26 @@
     <header>
         <div class="nav-container">
             <div class="logo-area">
-                <!-- LOGO SMA IPIEMS (Menggunakan placeholder image berbasis teks/ikon SVG inline demi kemudahan load, silakan ganti src jika diperlukan) -->
                 <img src="logoSMAIPIEMS.png" alt="Logo SMA IPIEMS">
                 <div class="logo-text">
                     <h1>SMA IPIEMS</h1>
                     <p>SURABAYA</p>
                 </div>
             </div>
+            <!-- Tombol Hamburger -->
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
             <nav>
-                <ul>
-                    <li><a href="#" class="nav-link active" data-target="home-page"><i class="fa-solid fa-house"></i> Home</a></li>
+                <ul id="nav-list">
+                    <li><a href="#" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link"><i class="fa-solid fa-book"></i> Panduan <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
+                        <a href="#section-panduan" class="nav-link"><i class="fa-solid fa-book"></i> Panduan <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" class="nav-link" data-target="panduan-page"><i class="fa-solid fa-user-shield"></i> Panduan Login Akun Siswa</a></li>
+                            <li><a href="#section-panduan"><i class="fa-solid fa-user-shield"></i> Login Akun Siswa</a></li>
                         </ul>
                     </li>
-                    <li><a href="#section-tes-area" class="nav-link scroller"><i class="fa-solid fa-file-signature"></i> Menu Tes</a></li>
+                    <!-- <li><a href="#section-tes-area" class="nav-link"><i class="fa-solid fa-file-signature"></i> Menu Tes</a></li> -->
                 </ul>
             </nav>
         </div>
@@ -460,104 +603,96 @@
     <!-- WRAPPER HALAMAN UTAMA -->
     <div class="main-wrapper">
 
-        <!-- ================= PAGE 1: HOME PAGE ================= -->
-        <div id="home-page" class="page-section">
-            
-            <!-- 1. HERO SECTION -->
-            <section class="hero">
-                <div class="hero-content">
-                    <h2>Selamat Datang di Website Panduan <span>SMA IPIEMS</span></h2>
-                    <p>Portal resmi informasi panduan akademik, kelengkapan data diri, beserta simulasi pelaksanaan tes terintegrasi untuk seluruh siswa-siswi SMA IPIEMS.</p>
-                    <a href="#section-form" class="btn"><i class="fa-solid fa-arrow-down"></i> Mulai Pengisian Data</a>
-                </div>
-            </section>
+        <!-- 1. HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Selamat Datang di Website Panduan <span>SMA IPIEMS</span></h2>
+                <p>Portal resmi informasi panduan akademik, kelengkapan data diri, beserta simulasi pelaksanaan tes terintegrasi untuk seluruh siswa-siswi SMA IPIEMS.</p>
+                <a href="#section-panduan" class="btn btn-light"><i class="fa-solid fa-arrow-down"></i> Mulai</a>
+            </div>
+        </section>
 
-            <!-- 2. SECTION FORM KELENGKAPAN DATA DIRI -->
-            <section id="section-form" class="form-section">
-                <div class="section-container">
-                    <div class="section-title">
-                        <h3>Form Kelengkapan Data Diri Siswa</h3>
-                    </div>
-                    <div class="form-notice-card">
-                        <div class="notice-text">
-                            <h4><i class="fa-solid fa-circle-info" style="color: var(--primary-blue);"></i> Keterangan Pengisian</h4>
-                            <p>Seluruh siswa diwajibkan melakukan validasi dan pemutakhiran data diri secara lengkap sebelum mengambil bagian dalam rangkaian tes online.</p>
-                        </div>
-                        <!-- Silakan ganti '#' di href dengan link tujuan Anda nanti -->
-                        <a href="https://forms.gle/N2ueHNExPi3L5VPq9" target="_blank" class="btn btn-red"><i class="fa-solid fa-pen-to-square"></i> Isi Formulir Sekarang</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 3, 4, 5. SECTION TES 1, 2, 3 -->
-            <section id="section-tes-area" class="tes-section">
-                <div class="section-container">
-                    <div class="section-title">
-                        <h3>Daftar Pelaksanaan Tes</h3>
-                    </div>
-                    
-                    <div class="tes-grid">
-                        <!-- SECTION TES 1 -->
-                        <div class="tes-card">
-                            <div class="card-header-ui">
-                                <h4>TES PERTAMA</h4>
-                                <icon class="fa-solid fa-brain"></icon>
-                            </div>
-                            <div class="card-body-ui">
-                                <p>siswa akan mengisi beberapa instrumen yang dirancang untuk membantu sekolah memperoleh gambaran awal mengenai karakteristik, minat, potensi, serta kebutuhan peserta didik. </p>
-                                <a href="https://cerdasberkarakter.kemendikdasmen.go.id/instrumen-mpls-murid-smp-sma-smk/" target="_blank" class="btn"><i class="fa-solid fa-play"></i> Mulai Tes 1</a>
-                            </div>
-                        </div>
-
-                        <!-- SECTION TES 2 -->
-                        <div class="tes-card">
-                            <div class="card-header-ui">
-                                <h4>TES KEDUA</h4>
-                                <icon class="fa-solid fa-calculator"></icon>
-                            </div>
-                            <div class="card-body-ui">
-                                <p>tes dan survei yang membantu sekolah mengenali karakteristik, kebutuhan, potensi, serta kondisi awal murid sejak hari pertama masuk sekolah.</p>
-                                <a href="https://karakter.data.kemendikdasmen.go.id/mpls/" target="_blank" class="btn"><i class="fa-solid fa-play"></i> Mulai Tes 2</a>
-                            </div>
-                        </div>
-
-                        <!-- SECTION TES 3 
-                        <div class="tes-card">
-                            <div class="card-header-ui">
-                                <h4>Section Tes 3</h4>
-                                <icon class="fa-solid fa-language"></icon>
-                            </div>
-                            <div class="card-body-ui">
-                                <p>Tahap akhir yang berfokus pada tes literasi Bahasa Indonesia, Bahasa Inggris, dan pendalaman materi khusus.</p>
-                                <a href="#" class="btn"><i class="fa-solid fa-play"></i> Mulai Tes 3</a>
-                            </div>
-                        </div> -->
-                    </div>
-
-                </div>
-            </section>
-        </div>
-
-        <!-- ================= PAGE 2: PANDUAN PAGE (EMBED DRIVE) ================= -->
-        <div id="panduan-page" class="page-section hidden">
-            <div class="panduan-page-container">
-                <div class="back-btn-area">
-                    <a href="#" class="btn nav-link" data-target="home-page" style="background: var(--dark-text);"><i class="fa-solid fa-arrow-left"></i> Kembali ke Home</a>
-                </div>
-                <div class="section-title" style="text-align: left; margin-bottom: 30px;">
+        <!-- 2. SECTION PANDUAN (PDF EMBED) - LATAR BELAKANG: PUTIH BERSIH -->
+        <section id="section-panduan" class="panduan-section">
+            <div class="section-container">
+                <div class="section-title">
                     <h3>Panduan Login Akun Siswa</h3>
                 </div>
                 <div class="embed-container">
-                    <!-- GANTI tautan src di bawah ini dengan tautan embed PDF Google Drive Anda yang valid -->
-                    <!-- Contoh format tautan embed drive: https://drive.google.com/file/d/ID_FILE_ANDA/preview -->
                     <iframe src="https://drive.google.com/file/d/1G2HaSAs-EW1aeVEUXWkvesPBYE83jUxZ/preview" allow="autoplay"></iframe>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- 3. SECTION FORM DATA DIRI - LATAR BELAKANG: BIRU MUDA KONTRASTING -->
+        <section id="section-form" class="form-section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h3>Formulir Kelengkapan Data Peserta Didik<br>SMA IPIEMS Tahun Ajaran 2026–2027</h3>
+                </div>
+                
+                <!-- CARD UTAMA PENGISIAN FORM (PREMIUM LOOK & HIGH NOTICE) -->
+                <div class="form-notice-card">
+                    <div class="notice-text">
+                        <span class="badge-important"><i class="fa-solid fa-triangle-exclamation"></i> Wajib Diisi</span>
+                        <h4>Keterangan Validasi Data</h4>
+                        <p>Seluruh peserta didik diwajibkan mengisi formulir ini dengan lengkap, benar, dan sesuai kondisi terbaru. Data yang diberikan akan digunakan sebagai data administrasi resmi SMA IPIEMS Tahun Ajaran 2026–2027. Pastikan seluruh informasi telah diperiksa kembali sebelum mengirimkan formulir. Terima kasih atas kerja samanya.</p>
+                    </div>
+                    <a href="https://forms.gle/N2ueHNExPi3L5VPq9" target="_blank" class="btn btn-pulse"><i class="fa-solid fa-pen-to-square"></i> Isi Formulir Sekarang</a>
+                </div>
+            </div>
+        </section>
+    
+        <!-- 4. SECTION TES - LATAR BELAKANG: ABU-ABU TERANG BAWAN -->
+        <!-- <section id="section-tes-area" class="tes-section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h3>Daftar Pelaksanaan Tes</h3>
+                </div>
+                
+                <div class="tes-grid">
+                    
+                    <div class="tes-card">
+                        <div class="card-header-ui">
+                            <h4>1. IDENTIFIKASI AWAL</h4>
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <div class="card-body-ui">
+                            <p>Silakan mengisi seluruh bagian tes ini secara lengkap, jujur, dan sesuai dengan kondisi diri masing-masing. Bacalah setiap pertanyaan dengan seksama sebelum memberikan jawaban, serta pastikan semua isian telah diperiksa kembali sebelum mengirimkan formulir.</p>
+                            <a href="https://cerdasberkarakter.kemendikdasmen.go.id/instrumen-mpls-murid-smp-sma-smk/" target="_blank" class="btn"><i class="fa-solid fa-play"></i> Mulai Tes 1</a>
+                        </div>
+                    </div>
+
+                    
+                    <div class="tes-card">
+                        <div class="card-header-ui">
+                            <h4>2. SURVEI MPLS RAMAH 2026</h4>
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div class="card-body-ui">
+                            <p>Silakan mengisi seluruh tes dan survei pada formulir ini dengan cermat, jujur, dan sesuai dengan kondisi yang sebenarnya. Bacalah setiap petunjuk dan pertanyaan dengan teliti, lalu pastikan seluruh isian telah lengkap sebelum mengirimkan formulir.</p>
+                            <a href="https://karakter.data.kemendikdasmen.go.id/mpls/" target="_blank" class="btn"><i class="fa-solid fa-play"></i> Mulai Tes 2</a>
+                        </div>
+                    </div>
+
+                    
+                    <div class="tes-card">
+                        <div class="card-header-ui">
+                            <h4>3. TES DETEKSI DINI</h4>
+                            <i class="fa-solid fa-language"></i>
+                        </div>
+                        <div class="card-body-ui">
+                            <p>Silakan mengisi formulir ini secara lengkap, jujur, dan sesuai dengan kondisi yang sebenarnya. Bacalah setiap pertanyaan dengan saksama sebelum memberikan jawaban, serta pastikan seluruh isian telah lengkap dan benar sebelum mengirimkan formulir.</p>
+                            <a href="#" class="btn"><i class="fa-solid fa-play"></i> Mulai Tes 3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
 
     </div>
 
-    <!-- 6. FOOTER -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-container">
             <div class="footer-info">
@@ -572,63 +707,30 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT CONTROLLER (SPA ROUTING & NAV ACTIVE STATE) -->
+    <!-- JAVASCRIPT CONTROLLER -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const pages = document.querySelectorAll('.page-section');
-            const scrollers = document.querySelectorAll('.scroller');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navList = document.getElementById('nav-list');
+            const navLinks = document.querySelectorAll('.nav-link, .dropdown-menu a');
 
-            // Fungsi untuk berpindah halaman (SPA routing)
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const targetPageId = this.getAttribute('data-target');
-                    
-                    if (targetPageId) {
-                        e.preventDefault();
-                        
-                        // Sembunyikan semua halaman
-                        pages.forEach(page => page.classList.add('hidden'));
-                        
-                        // Tampilkan halaman target
-                        document.getElementById(targetPageId).classList.remove('hidden');
-
-                        // Update kelas active di navbar
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        
-                        // Jika yang diklik adalah sub-menu panduan, aktifkan parent menu
-                        if(this.closest('.dropdown-menu')) {
-                            this.closest('.dropdown').querySelector('.nav-link').classList.add('active');
-                        } else {
-                            this.classList.add('active');
-                        }
-
-                        // Scroll otomatis ke atas setiap pindah halaman
-                        window.scrollTo(0, 0);
-                    }
-                });
+            // Toggle Hamburger Menu di Mobile
+            mobileMenu.addEventListener('click', function() {
+                navList.classList.toggle('show');
             });
 
-            // Handler khusus untuk scroll halus di satu halaman (Menu Tes)
-            scrollers.forEach(scrollLink => {
-                scrollLink.addEventListener('click', function(e) {
-                    e.preventDefault();
+            // Sistem tracking nav menu active + auto close hamburger saat menu diklik
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                     
-                    // Pastikan user dikembalikan ke home page terlebih dahulu jika sedang di page panduan
-                    pages.forEach(page => page.classList.add('hidden'));
-                    document.getElementById('home-page').classList.remove('hidden');
-                    
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    document.querySelector('[data-target="home-page"]').classList.add('active');
-
-                    // Lakukan smooth scroll ke section anchor target
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        setTimeout(() => {
-                            targetSection.scrollIntoView({ behavior: 'smooth' });
-                        }, 50);
+                    if(this.closest('.dropdown-menu')) {
+                        this.closest('.dropdown').querySelector('.nav-link').classList.add('active');
+                    } else {
+                        this.classList.add('active');
                     }
+
+                    navList.classList.remove('show');
                 });
             });
         });
