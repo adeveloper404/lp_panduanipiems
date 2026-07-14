@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Login - SMA IPIEMS</title>
+    <link rel="icon" type="image/png" href="logoSMAIPIEMS.png" />
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CUSTOM PROPERTIES (TEMA LOGO SMA IPIEMS) --- */
+        :root {
+            --primary-blue: #2E3B95;
+            --primary-red: #E53935;
+            --light-bg: #F8FAFC;
+            --dark-text: #1E293B;
+            --muted-text: #64748B;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(46, 59, 149, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(46, 59, 149, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-area img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: var(--primary-red);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary-blue);
+            background: rgba(46, 59, 149, 0.05);
+        }
+
+        /* --- MAIN CONTENT WRAPPER --- */
+        .main-wrapper {
+            margin-top: 80px;
+            min-height: calc(100vh - 160px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, rgba(46, 59, 149, 0.95) 0%, rgba(229, 57, 53, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200') no-repeat center center;
+            background-size: cover;
+            padding: 80px 20px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:hover {
+            background: #1e2870;
+            transform: translateY(-2px);
+        }
+
+        .btn-light {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .btn-light:hover {
+            background: #f1f5f9;
+            color: #1e2870;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* --- PANDUAN SECTION --- */
+        .panduan-section {
+            background-color: var(--white);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h3 {
+            font-size: 28px;
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .embed-container {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 15px;
+            border: 1px solid rgba(46, 59, 149, 0.05);
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+        }
+
+        .embed-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .action-area {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark-text);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px 20px;
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-info p {
+            font-size: 14px;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                display: none;
+                padding: 10px 0;
+            }
+            nav ul.show { display: flex; }
+            nav ul li { width: 100%; }
+            nav ul li a { padding: 12px 25px; border-radius: 0; }
+            .hero h2 { font-size: 26px; }
+            .embed-container iframe { height: 450px; }
+            .footer-container { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="logoSMAIPIEMS.png" alt="Logo SMA IPIEMS">
+                <div class="logo-text">
+                    <h1>SMA IPIEMS</h1>
+                    <p>SURABAYA</p>
+                </div>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <nav>
+                <ul id="nav-list">
+                    <li><a href="index.html"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- WRAPPER HALAMAN UTAMA -->
+    <div class="main-wrapper">
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Panduan Login Akun Siswa</h2>
+                <p>Ikuti petunjuk di bawah ini untuk dapat mengakses akun siswa dengan lancar dan aman.</p>
+                <a href="index.html" class="btn btn-light"><i class="fa-solid fa-house"></i> Kembali ke Beranda</a>
+            </div>
+        </section>
+        
+        <!-- SECTION PANDUAN (PDF EMBED) -->
+        <section class="panduan-section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h3>Dokumen Petunjuk Login</h3>
+                </div>
+                <div class="embed-container">
+                    <iframe src="https://drive.google.com/file/d/1G2HaSAs-EW1aeVEUXWkvesPBYE83jUxZ/preview" allow="autoplay"></iframe>
+                </div>
+                
+                <!-- Tombol Navigasi Bawah -->
+                <div class="action-area">
+                    <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Kembali ke Halaman Utama</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p class="footer-brand">SMA IPIEMS Surabaya</p>
+                <p>&copy; 2026 Hak Cipta Dilindungi. AdeveloperProject.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-solid fa-globe"></i></a>
+                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navList = document.getElementById('nav-list');
+
+            mobileMenu.addEventListener('click', function() {
+                navList.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>
