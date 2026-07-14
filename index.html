@@ -224,6 +224,7 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            justify-content: center;
         }
 
         .btn:hover {
@@ -254,7 +255,7 @@
 
         /* --- SECTION BASE LAYOUT --- */
         .section-container {
-            max-width: 1200px;
+            max-width: 1100px; 
             margin: 0 auto;
             padding: 70px 20px;
         }
@@ -286,11 +287,7 @@
             border-radius: 2px;
         }
 
-        /* --- PERBAIKAN WARNA BACKGROUND ANTAR-SECTION --- */
-        .panduan-section {
-            background-color: var(--white);
-        }
-
+        /* --- WARNA BACKGROUND ANTAR-SECTION --- */
         .form-section {
             background-color: #EFF6FF;
             border-top: 1px solid rgba(46, 59, 149, 0.05);
@@ -301,7 +298,7 @@
             background-color: var(--light-bg);
         }
 
-        /* --- PERBAIKAN CARD FORM DATA DIRI (SISTEM GRID & KOLOM GAMBAR) --- */
+        /* --- CARD FORM DATA DIRI (SISTEM GRID & KOLOM GAMBAR) --- */
         .form-notice-card {
             background: var(--white);
             border-radius: 24px;
@@ -309,7 +306,7 @@
             box-shadow: 0 20px 40px rgba(46, 59, 149, 0.12);
             border: 2px solid var(--primary-blue);
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr; /* Membagi kolom teks dan gambar */
+            grid-template-columns: 1.2fr 0.8fr; 
             gap: 40px;
             max-width: 1100px;
             margin: 0 auto;
@@ -422,12 +419,14 @@
             100% { box-shadow: 0 0 0 0 rgba(229, 57, 37, 0); }
         }
 
-        /* --- SECTION TES (GRID LAYOUT) --- */
+        /* --- SECTION TES (GRID 2 KOLOM KARENA HANYA ADA 2 CARD) --- */
         .tes-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr); /* Diset menjadi 2 kolom jejer pas */
             gap: 30px;
             width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .tes-card {
@@ -452,27 +451,27 @@
             color: var(--white);
             padding: 25px;
             position: relative;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
         }
 
         .tes-card:nth-child(2) .card-header-ui {
             background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
         }
 
-        .tes-card:nth-child(3) .card-header-ui {
-            background: linear-gradient(135deg, var(--primary-red) 0%, #ff6b6b 100%);
-        }
-
         .card-header-ui i {
             position: absolute;
             right: 20px;
             bottom: 10px;
-            font-size: 50px;
+            font-size: 46px;
             opacity: 0.15;
         }
 
         .card-header-ui h4 {
-            font-size: 22px;
+            font-size: 18px; 
             font-weight: 700;
+            line-height: 1.4;
         }
 
         .card-body-ui {
@@ -486,25 +485,8 @@
 
         .card-body-ui p {
             color: var(--muted-text);
-            font-size: 15px;
-        }
-
-        /* --- CONFIG EMBED DRIVE --- */
-        .embed-container {
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            padding: 15px;
-            border: 1px solid rgba(46, 59, 149, 0.05);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .embed-container iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
         /* --- FOOTER --- */
@@ -554,7 +536,6 @@
             .hero p { font-size: 16px; }
             .form-notice-card { grid-template-columns: 1fr; padding: 30px; gap: 30px; }
             .btn-pulse { width: 100%; justify-content: center; }
-            .tes-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -594,9 +575,8 @@
                 min-width: 100%;
             }
 
-            .tes-grid { grid-template-columns: 1fr; }
+            .tes-grid { grid-template-columns: 1fr; } /* Menjadi 1 kolom bertumpuk di HP */
             .hero h2 { font-size: 28px; }
-            .embed-container iframe { height: 450px; }
             .footer-container { flex-direction: column; gap: 20px; text-align: center; }
         }
     </style>
@@ -621,12 +601,12 @@
                 <ul id="nav-list">
                     <li><a href="#" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
                     <li class="dropdown">
-                        <a href="#section-panduan" class="nav-link"><i class="fa-solid fa-book"></i> Panduan <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
+                        <a class="nav-link" style="cursor: pointer;"><i class="fa-solid fa-book"></i> Panduan <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#section-panduan"><i class="fa-solid fa-user-shield"></i> Login Akun Siswa</a></li>
+                            <li><a href="panduan.html"><i class="fa-solid fa-user-shield"></i> Login Akun Siswa</a></li>
                         </ul>
                     </li>
-                    <!-- <li><a href="#section-tes-area" class="nav-link"><i class="fa-solid fa-file-signature"></i> Menu Tes</a></li> -->
+                    <li><a href="#section-tes-area" class="nav-link"><i class="fa-solid fa-file-signature"></i> Menu Tes</a></li>
                 </ul>
             </nav>
         </div>
@@ -640,38 +620,24 @@
             <div class="hero-content">
                 <h2>Selamat Datang di Website Panduan <span>SMA IPIEMS</span></h2>
                 <p>Portal resmi informasi panduan akademik, kelengkapan data diri, beserta simulasi pelaksanaan tes terintegrasi untuk seluruh siswa-siswi SMA IPIEMS.</p>
-                <a href="#section-panduan" class="btn btn-light"><i class="fa-solid fa-arrow-down"></i> Mulai</a>
+                <a href="#section-tes-area" class="btn btn-light"><i class="fa-solid fa-arrow-down"></i> Mulai</a>
             </div>
         </section>
-
-        <!-- 2. SECTION PANDUAN (PDF EMBED) - LATAR BELAKANG: PUTIH BERSIH -->
-        <section id="section-panduan" class="panduan-section">
-            <div class="section-container">
-                <div class="section-title">
-                    <h3>Panduan Login Akun Siswa</h3>
-                </div>
-                <div class="embed-container">
-                    <iframe src="https://drive.google.com/file/d/1G2HaSAs-EW1aeVEUXWkvesPBYE83jUxZ/preview" allow="autoplay"></iframe>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. SECTION FORM DATA DIRI - LATAR BELAKANG: BIRU MUDA KONTRASTING -->
+        
+        <!-- 3. SECTION FORM DATA DIRI -->
         <section id="section-form" class="form-section">
             <div class="section-container">
                 <div class="section-title">
                     <h3>Formulir Kelengkapan Data Peserta Didik<br>SMA IPIEMS Tahun Ajaran 2026–2027</h3>
                 </div>
                 
-                <!-- CARD UTAMA PENGISIAN FORM (GRID 2 KOLOM: INFO & GAMBAR LAMPIRAN) -->
                 <div class="form-notice-card">
                     <div class="notice-text">
                         <div>
                             <span class="badge-important"><i class="fa-solid fa-triangle-exclamation"></i> Wajib Diisi</span>
                             <h4>Keterangan Validasi Data & Persiapan Berkas</h4>
-                            <p>Seluruh peserta didik diwajibkan mengisi formulir ini dengan lengkap, benar, dan sesuai kondisi terbaru. Sebelum mengakses tautan formulir, pastikan Anda telah mempersiapkan <strong>file foto atau hasil scan</strong> dari beberapa dokumen penting berikut:</p>
+                            <p>Seluruh peserta didik diwajibkan mengisi formulir ini dengan lengkap, benar, dan sesuai kondisi terbaru. Sebelum mengakses tautan formulir, pastikan Anda telah mempersiapkan <strong>foto atau hasil scan</strong> dari beberapa dokumen penting berikut:</p>
                             
-                            <!-- List Informasi Dokumen -->
                             <ul class="prep-list">
                                 <li><i class="fa-solid fa-square-check"></i> Pas FOTO terbaru</li>
                                 <li><i class="fa-solid fa-square-check"></i> File Surat Keterangan Lulus (SKL) / Ijazah</li>
@@ -683,7 +649,6 @@
                         <a href="https://forms.gle/N2ueHNExPi3L5VPq9" target="_blank" class="btn btn-pulse"><i class="fa-solid fa-pen-to-square"></i> Isi Formulir Sekarang</a>
                     </div>
                     
-                    <!-- Kolom Kanan: Lampiran Gambar Panduan KK -->
                     <div class="notice-image-wrapper">
                         <img src="ContohFotoKK.png" alt="Panduan Contoh Foto KK Benar dan Salah">
                         <span class="image-caption"><i class="fa-solid fa-camera"></i> Perhatikan posisi pengambilan gambar dokumen agar berkas valid</span>
@@ -691,9 +656,9 @@
                 </div>
             </div>
         </section>
-    
-        <!-- 4. SECTION TES - LATAR BELAKANG: ABU-ABU TERANG BAWAN -->
-        <!-- <section id="section-tes-area" class="tes-section">
+
+        <!-- 4. SECTION TES -->
+        <section id="section-tes-area" class="tes-section">
             <div class="section-container">
                 <div class="section-title">
                     <h3>Daftar Pelaksanaan Tes</h3>
@@ -701,43 +666,58 @@
                 
                 <div class="tes-grid">
                     
+                    <!-- Card Tes 1 -->
                     <div class="tes-card">
                         <div class="card-header-ui">
                             <h4>1. IDENTIFIKASI AWAL</h4>
                             <i class="fa-solid fa-brain"></i>
                         </div>
                         <div class="card-body-ui">
-                            <p>Silakan mengisi seluruh bagian tes ini secara lengkap, jujur, dan sesuai dengan kondisi diri masing-masing. Bacalah setiap pertanyaan dengan seksama sebelum memberikan jawaban, serta pastikan semua isian telah diperiksa kembali sebelum mengirimkan formulir.</p>
+                            <p>Silakan mengisi seluruh bagian tes ini secara lengkap, jujur, dan sesuai dengan kondisi diri masing-masing. Bacalah setiap pertanyaan dengan seksama sebelum memberikan jawaban.</p>
                             <a href="https://cerdasberkarakter.kemendikdasmen.go.id/instrumen-mpls-murid-smp-sma-smk/" target="_blank" class="btn"><i class="fa-solid fa-play"></i> Mulai Tes 1</a>
                         </div>
                     </div>
 
-                    
+                    <!-- Card Tes 2 -->
                     <div class="tes-card">
                         <div class="card-header-ui">
                             <h4>2. SURVEI MPLS RAMAH 2026</h4>
                             <i class="fa-solid fa-calculator"></i>
                         </div>
                         <div class="card-body-ui">
-                            <p>Silakan mengisi seluruh tes dan survei pada formulir ini dengan cermat, jujur, dan sesuai dengan kondisi yang sebenarnya. Bacalah setiap petunjuk dan pertanyaan dengan teliti, lalu pastikan seluruh isian telah lengkap sebelum mengirimkan formulir.</p>
+                            <p>Silakan mengisi seluruh tes dan survei pada formulir ini dengan cermat, jujur, dan sesuai dengan kondisi yang sebenarnya. Bacalah setiap petunjuk dan pertanyaan dengan teliti.</p>
                             <a href="https://karakter.data.kemendikdasmen.go.id/mpls/" target="_blank" class="btn"><i class="fa-solid fa-play"></i> Mulai Tes 2</a>
                         </div>
                     </div>
 
-                    
-                    <div class="tes-card">
+                    <!-- Card Tes 3 -->
+                    <!-- <div class="tes-card">
                         <div class="card-header-ui">
                             <h4>3. TES DETEKSI DINI</h4>
                             <i class="fa-solid fa-language"></i>
                         </div>
                         <div class="card-body-ui">
-                            <p>Silakan mengisi formulir ini secara lengkap, jujur, dan sesuai dengan kondisi yang sebenarnya. Bacalah setiap pertanyaan dengan saksama sebelum memberikan jawaban, serta pastikan seluruh isian telah lengkap dan benar sebelum mengirimkan formulir.</p>
+                            <p>Silakan mengisi formulir ini secara lengkap, jujur, dan sesuai dengan kondisi yang sebenarnya. Periksa kembali seluruh jawaban sebelum mengirimkan formulir.</p>
                             <a href="https://forms.gle/NwNTSYxj4Aoka3DM8" target="_blank" class="btn"><i class="fa-solid fa-play"></i> Mulai Tes 3</a>
                         </div>
-                    </div>
+                    </div> -->
+
+                    <!-- Card Tes 4 (BARU) -->
+                    <!-- <div class="tes-card">
+                        <div class="card-header-ui">
+                            <h4>4. SURVEI PENGENALAN KARAKTERISTIK DAN KEBUTUHAN PERKEMBANGAN MURID</h4>
+                            <i class="fa-solid fa-users-viewfinder"></i>
+                        </div>
+                        <div class="card-body-ui">
+                            <p>Silakan mengisi survei ini secara berkala untuk memetakan karakteristik serta kebutuhan penunjang tumbuh kembang belajar murid. Isi secara valid dan teliti.</p>
+                            
+                            <a href="https://forms.gle/xHkocedHbSYCFLF49" target="_blank" class="btn"><i class="fa-solid fa-play"></i> Mulai Tes 4</a>
+                        </div>
+                    </div> -->
+                    
                 </div>
             </div>
-        </section> -->
+        </section>
 
     </div>
 
